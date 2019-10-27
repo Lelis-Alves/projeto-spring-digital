@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,7 +21,8 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String logradouro;
 	private String numero;

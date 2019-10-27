@@ -10,10 +10,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,7 +25,8 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 

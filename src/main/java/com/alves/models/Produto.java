@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -25,7 +27,8 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private double preco;

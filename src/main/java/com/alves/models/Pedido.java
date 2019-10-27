@@ -18,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,7 +30,8 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@JsonFormat(pattern="dd/MM/yyyy hh:mm")

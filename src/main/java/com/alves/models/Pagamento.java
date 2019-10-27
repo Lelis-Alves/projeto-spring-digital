@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -20,7 +22,8 @@ public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "increment", strategy = "increment")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private Integer estado;
 
