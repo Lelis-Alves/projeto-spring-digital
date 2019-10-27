@@ -1,5 +1,6 @@
 package com.alves.controllers;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.alves.models.Pedido;
 import com.alves.models.Produto;
 import com.alves.services.ProdutoService;
 
@@ -30,6 +33,14 @@ public class ProdutoController {
 	public ResponseEntity<Produto> find(@PathVariable Integer id) {
 		Produto obj = produtoService.buscar(id);
 		return obj != null ? ResponseEntity.ok().body(obj) : ResponseEntity.notFound().build();
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Produto obj) {
+		obj = produtoService.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId())
+				.toUri();
+		return ResponseEntity.created(uri).build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
