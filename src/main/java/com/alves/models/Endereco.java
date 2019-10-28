@@ -21,8 +21,8 @@ public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GenericGenerator(name = "increment", strategy = "increment")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String logradouro;
 	private String numero;

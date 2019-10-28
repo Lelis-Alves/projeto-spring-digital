@@ -21,8 +21,8 @@ public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GenericGenerator(name = "increment", strategy = "increment")
 	private Integer id;
 	private String nome;
 

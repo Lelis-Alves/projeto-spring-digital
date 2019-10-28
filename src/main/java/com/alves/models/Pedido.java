@@ -30,8 +30,8 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GenericGenerator(name = "increment", strategy = "increment")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@JsonFormat(pattern="dd/MM/yyyy hh:mm")

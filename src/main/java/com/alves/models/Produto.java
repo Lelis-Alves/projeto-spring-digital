@@ -27,8 +27,8 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GenericGenerator(name = "increment", strategy = "increment")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private double preco;
